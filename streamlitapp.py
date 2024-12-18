@@ -33,21 +33,17 @@ if submit_button:
         data = data["data"]
         
         # Prepare lists for DataFrame
-        class_name = []
-        subclas_id = []
-        description = []
+        class_names = []
+        class_ids = []
         
-        for classs in data:
-            subclass_list = data[classs]["sub classes"]
-            for a in subclass_list:
-                class_name.append(classs)
-                subclas_id.append(a["sub class id"])
-                description.append(a["description"])
+        # Iterate through the data dictionary
+        for class_name, class_data in data.items():
+            class_names.append(class_name)
+            class_ids.append(class_data["class id"])  # Access the "class id" field
         
+        # Create a DataFrame with Class Name and Class ID
         df = pd.DataFrame({
-            "Class Name": class_name,
-            "Sub Class ID": subclas_id,
-            "Description": description
+            "Class Name": class_names,
+            "Class ID": class_ids
         })
-        
         st.dataframe(df.reset_index(drop=True), use_container_width=True)
