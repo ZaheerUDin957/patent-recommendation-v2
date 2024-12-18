@@ -43,7 +43,7 @@ if submit_button:
         
         # Create a DataFrame with Class Name and Class ID
         df = pd.DataFrame({
-            "Class Name": class_names,
-            "Class ID": class_ids
+            "Class ID": class_ids,
+            "Class Name": class_names
         })
         st.dataframe(df.reset_index(drop=True), use_container_width=True)
